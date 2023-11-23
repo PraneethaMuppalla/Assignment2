@@ -30,7 +30,7 @@ document.title = "FirstDOMAssignment";
 
 // *** GETELEMENTSBYTAGNAME *** //
 // let li = document.getElementsByTagName("li");
-// //console.log(items[0]);
+// console.log(li);
 // li[1].textContent = "Hello";
 // li[1].style.fontWeight = "bold";
 // for (let item of li) {
@@ -38,22 +38,71 @@ document.title = "FirstDOMAssignment";
 // }
 
 // *** QUERYSELECTOR *** //
-let header = document.querySelector("#main-header");
-header.style.borderBottom = "4px solid #ccc";
-let inputEl = document.querySelector("input");
-inputEl.value = "Hello World!";
-let submitBtn = document.querySelector('input[type="submit"]');
-submitBtn.value = "SEND";
-let firstItem = document.querySelector(".list-group-item");
-let secondItem = document.querySelector(".list-group-item:nth-child(2)");
+// let header = document.querySelector("#main-header");
+// header.style.borderBottom = "4px solid #ccc";
+// let inputEl = document.querySelector("input");
+// inputEl.value = "Hello World!";
+// let submitBtn = document.querySelector('input[type="submit"]');
+// submitBtn.value = "SEND";
+// let firstItem = document.querySelector(".list-group-item");
+// let secondItem = document.querySelector(".list-group-item:nth-child(2)");
 //secondItem.style.backgroundColor = "#00ff00";
-let thirdItem = document.querySelector(".list-group-item:nth-child(3)");
-//thirdItem.style.display = "none";
-let lastItem = document.querySelector(".list-group-item:last-child");
+// let thirdItem = document.querySelector(".list-group-item:nth-child(3)");
+// //thirdItem.style.display = "none";
+// let lastItem = document.querySelector(".list-group-item:last-child");
 
 // *** QUERYSELECTORALL *** //
-let listItems = document.querySelectorAll("li");
-listItems[1].style.color = "green";
+// let listItems = document.querySelectorAll("li");
+// console.log(listItems);
+// listItems[1].style.color = "green";
 
-let oddListItems = document.querySelectorAll("li:nth-child(odd)");
-oddListItems.forEach((each) => (each.style.background = "green"));
+// let oddListItems = document.querySelectorAll("li:nth-child(odd)");
+// oddListItems.forEach((each) => (each.style.background = "green"));
+
+// *** TRAVERSING THE DOM *** //
+let itemsList = document.querySelector("#items");
+// parentNode
+//console.log(itemsList.parentNode);
+//parentEl
+//console.log(itemsList.parentElement);
+//childNodes
+//console.log(itemsList.childNodes);
+//children
+//console.log(itemsList.children);
+//firstChild
+//console.log(itemsList.firstChild);
+//firstElementChild
+//console.log(itemsList.firstElementChild);
+//lastChild
+//console.log(itemsList.lastChild);
+//lastElementChild
+//console.log(itemsList.lastElementChild);
+//previousSibling
+//console.log(itemsList.previousSibling);
+//previousElementSibling
+//console.log(itemsList.previousElementSibling);
+//nextSibling
+//console.log(itemsList.nextSibling);
+//nextElementSibling
+//console.log(itemsList.nextElementSibling);
+
+//createElement
+
+//createDiv
+const newDiv = document.createElement("div");
+newDiv.className = "hello";
+newDiv.id = "Hello";
+newDiv.setAttribute("title", "Hello World!");
+const text = document.createTextNode("Hello World!");
+newDiv.appendChild(text);
+
+const container = document.querySelector("header .container");
+const h1El = document.querySelector("header h1");
+container.insertBefore(newDiv, h1El);
+newDiv.style.fontSize = "30px";
+
+const newLi = document.createElement("li");
+const liText = document.createTextNode("Hello World!");
+newLi.appendChild(liText);
+newLi.className = "list-group-item";
+itemsList.insertBefore(newLi, itemsList.firstElementChild);
