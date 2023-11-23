@@ -21,9 +21,18 @@ document.title = "FirstDOMAssignment";
 // addItemsEl.style.color = "rgb(0,255,0)";
 
 // *** GETELEMENTSBYCLASSNAME *** //
-let items = document.getElementsByClassName("list-group-item");
-console.log(items[0]);
-items[2].style.backgroundColor = "#00ff00";
-for (let item of items) {
-  item.style.fontWeight = "bold";
+// let items = document.getElementsByClassName("list-group-item");
+// console.log(items[0]);
+// items[2].style.backgroundColor = "#00ff00";
+// for (let item of items) {
+//   item.style.fontWeight = "bold";
+// }
+
+// *** GETELEMENTSBYTAGNAME *** //
+let li = document.getElementsByTagName("li");
+//console.log(items[0]);
+li[1].textContent = "Hello";
+li[1].style.fontWeight = "bold";
+for (let item of li) {
+  item.style.backgroundColor = "#f4f4f4";
 }
