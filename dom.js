@@ -10,10 +10,20 @@
 //console.log(document.forms[0]);
 document.title = "FirstDOMAssignment";
 
-let headerEl = document.getElementById("main-header");
-headerEl.style.borderBottom = "3px solid #000";
-let mainContainer = document.getElementById("main");
-//console.log(mainContainer.firstChild);
-let addItemsEl = mainContainer.firstElementChild;
-addItemsEl.style.fontWeight = "bold";
-addItemsEl.style.color = "rgb(0,255,0)";
+// *** GETELEMENTBYID *** //
+
+// let headerEl = document.getElementById("main-header");
+// headerEl.style.borderBottom = "3px solid #000";
+// let mainContainer = document.getElementById("main");
+// //console.log(mainContainer.firstChild);
+// let addItemsEl = mainContainer.firstElementChild;
+// addItemsEl.style.fontWeight = "bold";
+// addItemsEl.style.color = "rgb(0,255,0)";
+
+// *** GETELEMENTSBYCLASSNAME *** //
+let items = document.getElementsByClassName("list-group-item");
+console.log(items[0]);
+items[2].style.backgroundColor = "#00ff00";
+for (let item of items) {
+  item.style.fontWeight = "bold";
+}
