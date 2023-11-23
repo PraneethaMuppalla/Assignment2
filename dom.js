@@ -46,7 +46,14 @@ let submitBtn = document.querySelector('input[type="submit"]');
 submitBtn.value = "SEND";
 let firstItem = document.querySelector(".list-group-item");
 let secondItem = document.querySelector(".list-group-item:nth-child(2)");
-secondItem.style.backgroundColor = "#00ff00";
+//secondItem.style.backgroundColor = "#00ff00";
 let thirdItem = document.querySelector(".list-group-item:nth-child(3)");
-thirdItem.style.display = "none";
+//thirdItem.style.display = "none";
 let lastItem = document.querySelector(".list-group-item:last-child");
+
+// *** QUERYSELECTORALL *** //
+let listItems = document.querySelectorAll("li");
+listItems[1].style.color = "green";
+
+let oddListItems = document.querySelectorAll("li:nth-child(odd)");
+oddListItems.forEach((each) => (each.style.background = "green"));
