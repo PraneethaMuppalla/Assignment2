@@ -5,6 +5,9 @@ const emailInput = document.querySelector("#email");
 const msg = document.querySelector(".msg");
 const uLEl = document.querySelector("#users");
 
+//delete user
+uLEl.addEventListener("click", deleteUser);
+
 function getAppointments() {
   let appointemntsString = localStorage.getItem("appointments");
   let parsedAppointemnts = JSON.parse(appointemntsString);
@@ -19,7 +22,14 @@ let appointments = getAppointments();
 
 function renderEachAppointment(each) {
   const li = document.createElement("li");
-  li.textContent = `${each.name}: ${each.email}`;
+  li.id = each.id;
+  li.appendChild(document.createTextNode(`${each.name}: ${each.email}`));
+
+  let delButton = document.createElement("button");
+  delButton.style.display = "inline";
+  delButton.className = "del-btn";
+  delButton.appendChild(document.createTextNode("X"));
+  li.appendChild(delButton);
   uLEl.appendChild(li);
 }
 
@@ -35,6 +45,7 @@ myForm.addEventListener("submit", (e) => {
     }, 3000);
   } else {
     let newAppointment = {
+      id: emailInput.value,
       name: nameInput.value,
       email: emailInput.value,
     };
@@ -49,3 +60,22 @@ myForm.addEventListener("submit", (e) => {
 appointments.map((each) => {
   renderEachAppointment(each);
 });
+
+function deleteUser(e) {
+  if (e.target.classList.contains("del-btn")) {
+    if (confirm("Are you sure?")) {
+      const liItem = e.target.parentElement;
+      const liId = liItem.id;
+      let index = -1;
+      appointments.map((each, i) => {
+        if (each.id == liId) {
+          index = i;
+        }
+      });
+      appointments.splice(index, 1);
+      localStorage.setItem("appointments", JSON.stringify(appointments));
+      //console.log(id);
+      uLEl.removeChild(liItem);
+    }
+  }
+}
