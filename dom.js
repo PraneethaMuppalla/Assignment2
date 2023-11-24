@@ -89,20 +89,48 @@ let itemsList = document.querySelector("#items");
 //createElement
 
 //createDiv
-const newDiv = document.createElement("div");
-newDiv.className = "hello";
-newDiv.id = "Hello";
-newDiv.setAttribute("title", "Hello World!");
-const text = document.createTextNode("Hello World!");
-newDiv.appendChild(text);
+// const newDiv = document.createElement("div");
+// newDiv.className = "hello";
+// newDiv.id = "Hello";
+// newDiv.setAttribute("title", "Hello World!");
+// const text = document.createTextNode("Hello World!");
+// newDiv.appendChild(text);
 
-const container = document.querySelector("header .container");
-const h1El = document.querySelector("header h1");
-container.insertBefore(newDiv, h1El);
-newDiv.style.fontSize = "30px";
+// const container = document.querySelector("header .container");
+// const h1El = document.querySelector("header h1");
+// container.insertBefore(newDiv, h1El);
+// newDiv.style.fontSize = "30px";
 
-const newLi = document.createElement("li");
-const liText = document.createTextNode("Hello World!");
-newLi.appendChild(liText);
-newLi.className = "list-group-item";
-itemsList.insertBefore(newLi, itemsList.firstElementChild);
+// const newLi = document.createElement("li");
+// const liText = document.createTextNode("Hello World!");
+// newLi.appendChild(liText);
+// newLi.className = "list-group-item";
+// itemsList.insertBefore(newLi, itemsList.firstElementChild);
+
+// document.getElementById("button").addEventListener("click", buttonClicked);
+// function buttonClicked(e) {
+// document.getElementById("output").innerHTML = `<h3>${e.target.id}<h3>`;
+//console.log(e.type);
+//console.log(e.clientY);
+//console.log(e.clientX);
+//console.log(e.offsetX);
+//console.log(e.offsetY);
+//console.log(e.altKey);
+//console.log(e.shiftKey);
+//console.log(e.ctrlKey);
+//}
+
+//let btn = document.getElementById("button");
+// btn.addEventListener("click", runEvent);
+//btn.addEventListener("dblclick", runEvent);
+//btn.addEventListener("mouseup", runEvent);
+//btn.addEventListener("mousedown", runEvent);
+let inputEl = document.querySelector('input[type="text"]');
+//inputEl.addEventListener("keydown", runEvent);
+//inputEl.addEventListener("keyup", runEvent);
+//inputEl.addEventListener("keypress", runEvent);
+//inputEl.addEventListener("focus", runEvent);
+inputEl.addEventListener("blur", runEvent);
+function runEvent(e) {
+  console.log(e.target.value);
+}
