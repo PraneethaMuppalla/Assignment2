@@ -29,7 +29,13 @@ function renderEachAppointment(each) {
   delButton.style.display = "inline";
   delButton.className = "del-btn";
   delButton.appendChild(document.createTextNode("X"));
+
+  let editButton = document.createElement("button");
+  //editButton.style.display = "inline";
+  editButton.className = "edit-btn";
+  editButton.appendChild(document.createTextNode("Edit"));
   li.appendChild(delButton);
+  li.appendChild(editButton);
   uLEl.appendChild(li);
 }
 
@@ -72,6 +78,24 @@ function deleteUser(e) {
           index = i;
         }
       });
+      appointments.splice(index, 1);
+      localStorage.setItem("appointments", JSON.stringify(appointments));
+      //console.log(id);
+      uLEl.removeChild(liItem);
+    }
+  } else if (e.target.classList.contains("edit-btn")) {
+    if (confirm("Are you sure?")) {
+      const liItem = e.target.parentElement;
+      const liId = liItem.id;
+      let index = -1;
+      appointments.map((each, i) => {
+        if (each.id == liId) {
+          index = i;
+        }
+      });
+      let editedAppt = appointments[index];
+      nameInput.value = editedAppt.name;
+      emailInput.value = editedAppt.email;
       appointments.splice(index, 1);
       localStorage.setItem("appointments", JSON.stringify(appointments));
       //console.log(id);
