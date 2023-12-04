@@ -77,6 +77,8 @@ myForm.addEventListener("submit", (e) => {
       .post("/users", newAppointment)
       .then((res) => {
         renderEachAppointment(res.data);
+        nameInput.value = "";
+        emailInput.value = "";
       })
       .catch((e) => {
         if (e.response) {
@@ -91,8 +93,6 @@ myForm.addEventListener("submit", (e) => {
           console.log(e);
         }
       });
-    nameInput.value = "";
-    emailInput.value = "";
   }
 });
 
@@ -112,5 +112,18 @@ function deleteUser(id) {
 }
 
 function editUser(id) {
-  console.log("edit clicked");
+  if (confirm("Are you sure?")) {
+    const liItem = document.getElementById(id);
+    axiosInstance
+      .get(`/users/${id}`)
+      .then((res) => {
+        nameInput.value = res.data.name;
+        emailInput.value = res.data.email;
+        uLEl.removeChild(liItem);
+        axiosInstance.delete(`/users/${id}`).then((res) => {
+          console.log(res);
+        });
+      })
+      .catch((error) => console.log(error));
+  }
 }
