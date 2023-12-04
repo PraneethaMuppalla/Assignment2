@@ -37,16 +37,21 @@ function getAppointments() {
 
 function renderEachAppointment(each) {
   const li = document.createElement("li");
-  // li.id = each.id;
+  li.id = each._id;
   li.appendChild(document.createTextNode(`${each.name}: ${each.email}`));
 
   let delButton = document.createElement("button");
   delButton.className = "del-btn";
   delButton.appendChild(document.createTextNode("X"));
-
+  delButton.onclick = () => {
+    deleteUser(li.id);
+  };
   let editButton = document.createElement("button");
   editButton.className = "edit-btn";
   editButton.appendChild(document.createTextNode("Edit"));
+  editButton.onclick = () => {
+    editUser(li.id);
+  };
   li.appendChild(delButton);
   li.appendChild(editButton);
   uLEl.appendChild(li);
@@ -91,39 +96,44 @@ myForm.addEventListener("submit", (e) => {
   }
 });
 
-// function deleteUser(e) {
-//   if (e.target.classList.contains("del-btn")) {
-//     if (confirm("Are you sure?")) {
-//       const liItem = e.target.parentElement;
-//       const liId = liItem.id;
-//       let index = -1;
-//       appointments.map((each, i) => {
-//         if (each.id == liId) {
-//           index = i;
-//         }
-//       });
-//       appointments.splice(index, 1);
-//       localStorage.setItem("appointments", JSON.stringify(appointments));
-//       //console.log(id);
-//       uLEl.removeChild(liItem);
-//     }
-//   } else if (e.target.classList.contains("edit-btn")) {
-//     if (confirm("Are you sure?")) {
-//       const liItem = e.target.parentElement;
-//       const liId = liItem.id;
-//       let index = -1;
-//       appointments.map((each, i) => {
-//         if (each.id == liId) {
-//           index = i;
-//         }
-//       });
-//       let editedAppt = appointments[index];
-//       nameInput.value = editedAppt.name;
-//       emailInput.value = editedAppt.email;
-//       appointments.splice(index, 1);
-//       localStorage.setItem("appointments", JSON.stringify(appointments));
-//       //console.log(id);
-//       uLEl.removeChild(liItem);
-//     }
-//   }
-// }
+function deleteUser(id) {
+  console.log("clicked");
+  //   if (e.target.classList.contains("del-btn")) {
+  //     if (confirm("Are you sure?")) {
+  //       const liItem = e.target.parentElement;
+  //       const liId = liItem.id;
+  //       let index = -1;
+  //       appointments.map((each, i) => {
+  //         if (each.id == liId) {
+  //           index = i;
+  //         }
+  //       });
+  //       appointments.splice(index, 1);
+  //       localStorage.setItem("appointments", JSON.stringify(appointments));
+  //       //console.log(id);
+  //       uLEl.removeChild(liItem);
+  //     }
+  //   } else if (e.target.classList.contains("edit-btn")) {
+  //     if (confirm("Are you sure?")) {
+  //       const liItem = e.target.parentElement;
+  //       const liId = liItem.id;
+  //       let index = -1;
+  //       appointments.map((each, i) => {
+  //         if (each.id == liId) {
+  //           index = i;
+  //         }
+  //       });
+  //       let editedAppt = appointments[index];
+  //       nameInput.value = editedAppt.name;
+  //       emailInput.value = editedAppt.email;
+  //       appointments.splice(index, 1);
+  //       localStorage.setItem("appointments", JSON.stringify(appointments));
+  //       //console.log(id);
+  //       uLEl.removeChild(liItem);
+  //     }
+  //   }
+}
+
+function editUser(id) {
+  console.log("edit clicked");
+}
