@@ -97,41 +97,18 @@ myForm.addEventListener("submit", (e) => {
 });
 
 function deleteUser(id) {
-  console.log("clicked");
-  //   if (e.target.classList.contains("del-btn")) {
-  //     if (confirm("Are you sure?")) {
-  //       const liItem = e.target.parentElement;
-  //       const liId = liItem.id;
-  //       let index = -1;
-  //       appointments.map((each, i) => {
-  //         if (each.id == liId) {
-  //           index = i;
-  //         }
-  //       });
-  //       appointments.splice(index, 1);
-  //       localStorage.setItem("appointments", JSON.stringify(appointments));
-  //       //console.log(id);
-  //       uLEl.removeChild(liItem);
-  //     }
-  //   } else if (e.target.classList.contains("edit-btn")) {
-  //     if (confirm("Are you sure?")) {
-  //       const liItem = e.target.parentElement;
-  //       const liId = liItem.id;
-  //       let index = -1;
-  //       appointments.map((each, i) => {
-  //         if (each.id == liId) {
-  //           index = i;
-  //         }
-  //       });
-  //       let editedAppt = appointments[index];
-  //       nameInput.value = editedAppt.name;
-  //       emailInput.value = editedAppt.email;
-  //       appointments.splice(index, 1);
-  //       localStorage.setItem("appointments", JSON.stringify(appointments));
-  //       //console.log(id);
-  //       uLEl.removeChild(liItem);
-  //     }
-  //   }
+  if (confirm("Are you sure?")) {
+    const liItem = document.getElementById(id);
+    axiosInstance
+      .delete(`/users/${id}`)
+      .then((res) => {
+        console.log(res);
+        uLEl.removeChild(liItem);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }
 
 function editUser(id) {
